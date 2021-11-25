@@ -264,3 +264,17 @@ function setLevel(length, bombs) {
     gBombsOnBoard = bombs;
     restart();
 }
+
+function undo() {
+    var steps = gCellPerMove[gCellPerMove.length -1]
+    for (var i = steps -1; i >= 0; i--) {
+        var currCell = gCells[gCells.length-1];
+        gBoard[currCell.i][currCell.j].isHiden = true;
+        gBoard[currCell.i][currCell.j].isMarked = false;
+        var elCell = document.querySelector(`[data-location="${currCell.i + "+" + currCell.j}"]`);
+        elCell.classList.remove('clicked');
+        elCell.innerText = EMPTY;
+        gCells.pop();
+    }
+    gCellPerMove.pop()
+}
