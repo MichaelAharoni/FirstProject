@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Project</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="initGame()">
+    <div class="lvl first" onclick="setLevel(4,2)">Begginer (4x4)</div>
+    <div onclick="safeClick()" class="safe-click">SafeClick</div>
+    <div onclick="undo()" class="manual">undo</div>
+    <div class="gameOver">its not over untl its oveR!!</div>
+    <div class="Lives">
+        <h1>
+            ❤<br>❤<br>❤
+        </h1>
+    </div>
+    <div class="hints">
+        <h1 onclick="hint()">
+            💡<br>💡<br>💡<br>
+        </h1>
+    </div>
+    <div class="glow">💡</div>
+    <div class="lvl second" onclick="setLevel(8,12)">Semi-Pro (8x8)</div>
+    <div class="lvl third" onclick="setLevel(12,30)">Expert (12x12)</div>
+    <div class="abover">
+        <h1 onclick="restart()">😄</h1>
+        <div class="timer">00:00:00</div>
+    </div>
+    <div class="background">
+        <div class="backs"></div>
+        <h2> =>=> Can you finish the game In Less...</h2>
+        <h1>Then</h1>
+        <h2> =>=>=> 1 minute without having Any...</h2>
+        <h1>Explosion 🤔 ? </h1>
+    </div>
+    <table class="my-table" oncontextmenu="return false;">
+        <tbody onclick="counters();">
+        </tbody>
+    </table>
+    <script src="js/main.js"></script>
+    <script src="js/Bonuses.js"></script>
+</body>
+</html>
