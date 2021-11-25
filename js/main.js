@@ -148,8 +148,7 @@ function renderBoard(board) {
             var negsCount = countNegs(i, j, gBoard);
             var inner = (negsCount) ? negsCount : EMPTY;
             if (gBoard[i][j].value !== BOMB) gBoard[i][j].value = inner;
-            strHTML += `<td data-location="${i + "+" + j}" onclick="checkCell(this)"oncontextmenu="cellMarked(this)">${gBoard[i][j].value}</td>`;
-            // strHTML += `<td data-location="${i + "+" + j}" onclick="checkCell(this)"oncontextmenu="cellMarked(this)">${EMPTY}</td>`;
+            strHTML += `<td data-location="${i + "+" + j}" onclick="checkCell(this)"oncontextmenu="cellMarked(this)">${EMPTY}</td>`;
         }
         strHTML += `</tr>`;
     }
