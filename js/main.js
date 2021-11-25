@@ -124,6 +124,8 @@ function checkCell(elCell) {
         gBombsOnBoard--;
     }
     if (gBoard[pos.i][pos.j].isMine) {
+        if (gBoard[pos.i][pos.j].isMine && !gBoard[pos.i][pos.j].isHiden) return;
+        gBoard[pos.i][pos.j].isHiden = false;
         elCell.classList.add('bomb');
         var smiley = document.querySelector('.abover h1');
         smiley.innerText = '🤯';
