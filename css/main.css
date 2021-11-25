@@ -222,11 +222,13 @@ td {
 .gameOver {
     text-align: center;
     position: absolute;
-    margin-left: 46%;
-    margin-top: 12.2%;
-    font-size: 30px;
-    color: #f7e9e9;
+    margin-left: 37%;
+    margin-top: 28.2%;
+    transform: 2s;
+    font-size: 60px;
+    transform: rotate(330deg);
+    color: #976464;
     z-index: 10;
     display: none;
-    -webkit-text-stroke: 2px rgb(102, 96, 96);
+    -webkit-text-stroke: 2px rgb(2, 2, 2);
 }
