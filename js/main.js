@@ -2,12 +2,19 @@
 const EMPTY = '';
 const FLAG = '🚩';
 const BOMB = '💣';
+var strHTML = '';
 var gMilisec = 0;
 var gSec = 0;
 var gMin = 0;
 var gBoard;
 var gLength = 8;
 var gBombsOnBoard = 12;
+var gPrevShownCount = 0;
+var gMoves = 0;
+var gGameInterval;
+var gCellPerMove = [];
+var gCells = [];
+
 var gGame = {
     shownCount: 0,
     markedCount: 0,
@@ -18,13 +25,17 @@ var gGame = {
     isWinner: false,
     isHint: false
 }
-var gGameInterval;
 
 function restart() {
     clearInterval(gGameInterval);
     document.querySelector('.lives h1').innerHTML = `❤<br>❤<br>❤<br>`;
     document.querySelector('.abover h1').innerText = '😀';
     document.querySelector('.hints h1').innerHTML = `💡<br>💡<br>💡</br>`;
+    document.querySelector('.gameOver').innerText = '';
+    gCellPerMove = [];
+    gCells = [];
+    gMoves = 0;
+    gPrevShownCount = 0;
     gMilisec = 0;
     gSec = 0;
     gMin = 0;
@@ -34,18 +45,23 @@ function restart() {
     gGame.hintCount = 3;
     gGame.safeClickCount = 3;
     gGame.isWinner = false;
+    gGame.isHint = false;
     gGame.isOn = true;
     renderBoard(gBoard);
     document.querySelector('div.timer').innerText = "00:00:00";
-    setTimeout(initGame ,30); //for the page to be completly loaded
+    setTimeout(initGame, 30); //for the page to be completly loaded
 }
 
 function gameOver() {
     gGame.isOn = false;
-    if (gGame.isWinner) alert('CATCHINGGGGGGGG');
+    var gameModule = document.querySelector('.gameOver');
+    gameModule.style.display = "block";
+    if (gGame.isWinner) {
+        gameModule.innerText = "You are a Champion !!!"
+    }
     else {
+        gameModule.innerText = "Maybe next time 😉"
         showBombs();
-        alert('LOSER');
     }
     clearInterval(gGameInterval);
 }
@@ -83,7 +99,6 @@ function cellMarked(elCell) {
     else {
         elCell.innerText = FLAG;
         currCell.isMarked = true;
-        gGame.markedCount++;
         if (!gGame.shownCount && gGame.markedCount === 1) gGameInterval = setInterval(startTimer, 100);
     }
     checkGameOver()
@@ -138,16 +153,20 @@ function checkCell(elCell) {
         strHTML += `❤<br>`
     }
     lives.innerHTML = strHTML;
+    if (!gCells.includes(pos)) {
+        gCells.push(pos);
+    }
 }
 
 function renderBoard(board) {
-    var strHTML = '';
+    strHTML = '';
     for (var i = 0; i < board.length; i++) {
         strHTML += `<tr>`;
         for (var j = 0; j < board.length; j++) {
             var negsCount = countNegs(i, j, gBoard);
             var inner = (negsCount) ? negsCount : EMPTY;
             if (gBoard[i][j].value !== BOMB) gBoard[i][j].value = inner;
+            // strHTML += `<td data-location="${i + "+" + j}" onclick="checkCell(this)"oncontextmenu="cellMarked(this)">${gBoard[i][j].value}</td>`;
             strHTML += `<td data-location="${i + "+" + j}" onclick="checkCell(this)"oncontextmenu="cellMarked(this)">${EMPTY}</td>`;
         }
         strHTML += `</tr>`;

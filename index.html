@@ -11,7 +11,8 @@
 <body onload="initGame()">
     <div class="lvl first" onclick="setLevel(4,2)">Begginer (4x4)</div>
     <div onclick="safeClick()" class="safe-click">SafeClick</div>
-    <div onclick="manual()" class="safe-click manual">Manual Mode</div>
+    <div onclick="undo()" class="manual">undo</div>
+    <div class="gameOver">its not over untl its oveR!!</div>
     <div class="Lives">
         <h1>
             ❤<br>❤<br>❤
@@ -37,11 +38,10 @@
         <h1>Explosion 🤔 ? </h1>
     </div>
     <table class="my-table" oncontextmenu="return false;">
-        <tbody>
+        <tbody onclick="counters();">
         </tbody>
     </table>
     <script src="js/main.js"></script>
     <script src="js/Bonuses.js"></script>
 </body>
-
 </html>
