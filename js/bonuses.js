@@ -127,6 +127,7 @@ function undo() {
         gBoard[currCell.i][currCell.j].isMarked = false;
         var elCell = document.querySelector(`[data-location="${currCell.i + "+" + currCell.j}"]`);
         elCell.classList.remove('clicked');
+        gGame.shownCount--;
         elCell.innerText = EMPTY;
         gCells.pop();
     }

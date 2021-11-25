@@ -100,6 +100,7 @@ function cellMarked(elCell) {
         elCell.innerText = FLAG;
         currCell.isMarked = true;
         if (!gGame.shownCount && gGame.markedCount === 1) gGameInterval = setInterval(startTimer, 100);
+        gGame.markedCount++;
     }
     checkGameOver()
 }
