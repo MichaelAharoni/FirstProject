@@ -200,9 +200,10 @@ td {
 }
 
 .safe-click {
+    cursor: pointer;
     position: absolute;
     margin-left: 48%;
-    margin-top: 47.2%;
+    margin-top: 45.2%;
     font-size: 30px;
     color: #c7c4c4;
     -webkit-text-stroke: 2px rgb(100, 94, 94);
